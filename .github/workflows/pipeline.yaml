@@ -2,23 +2,23 @@ name: CI Pipeline
 
 on:
   push:
-    branches:[ main ]
+    branches: [ main ]    
 
 jobs:
   build:
     runs-on: ubuntu-latest
-  
+
     steps:
       - name: Checkout code
-        uses: actions/checkout@5
+        uses: actions/checkout@v4
 
       - name: Set up Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: 16
-          
-      - name: Install dependecies
-        run: npm install
+          node-version: 16         # or 20/22; if you must: '16.x'
+
+      - name: Install dependencies
+        run: npm install                 # use npm install if no lockfile
 
       - name: Run tests
         run: npm test
